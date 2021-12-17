@@ -1,0 +1,7 @@
+**/*.md
+**/*.svg
+node_modules/
+package.json
+README.md
+.eslintrc.js
+public
