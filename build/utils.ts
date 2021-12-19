@@ -14,8 +14,16 @@ export const readFile = (path: string) => {
 }
 
 export const emptyDir = (dir: string) => {
- return fs.rmSync(dir, { recursive: true, force: true })
+  return fs.rmSync(dir, { recursive: true, force: true })
 }
 
-export const cacheDir = path.resolve(appRoot, 'node_modules', '.cache');
+export const cacheDir = path.resolve(appRoot, 'node_modules/.cache');
 
+export function loadPackageData(pkgPath: string) {
+  const data = JSON.parse(fs.readFileSync(pkgPath, 'utf-8'))
+  const pkgDir = path.dirname(pkgPath)
+  return {
+    dir: pkgDir,
+    data
+  }
+}
