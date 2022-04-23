@@ -4,7 +4,9 @@
   "description": "mini vite",
   "main": ".eslintrc.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "esno build/dev.command.ts",
+    "optmize": "esno build/optmize.ts"
   },
   "repository": {
     "type": "git",
@@ -21,8 +23,10 @@
     "@types/node": "^17.0.0",
     "@types/react": "^17.0.37",
     "@types/react-dom": "^17.0.11",
+    "@types/resolve": "^1.20.1",
     "@types/ws": "^8.2.2",
-    "chalk": "^5.0.0",
+    "chalk": "^4.1.2",
+    "es-module-lexer": "^0.9.3",
     "esbuild": "^0.14.5",
     "esno": "^0.13.0",
     "prettier": "^2.5.1",

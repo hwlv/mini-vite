@@ -5,10 +5,10 @@
  */
 import { existsSync } from 'fs';
 import { dirname, extname, join } from 'path';
-import { transformSync } from 'esbuild';
+import { Loader, transformSync } from 'esbuild';
 import chalk from 'chalk';
 
-export function transformCode(opts) {
+export function transformCode(opts: { code: string; loader?: Loader }) {
     return transformSync(opts.code, {
         loader: opts.loader || 'ts',
         sourcemap: true,
@@ -16,12 +16,16 @@ export function transformCode(opts) {
     });
 }
 
-export function transformJS(opts) {
+export function transformJS(opts: {
+    appRoot: string;
+    path: string;
+    code: string;
+}) {
     const ext = extname(opts.path).slice(1);
     console.log({ ext });
     const ret = transformCode({
         code: opts.code,
-        loader: ext,
+        loader: ext as Loader
     });
 
     let { code } = ret;
